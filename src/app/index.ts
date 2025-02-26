@@ -8,7 +8,7 @@ import "primeicons/primeicons.css"
 import "./styles/main.scss"
 
 import { i18n } from "@/shared/lib/i18n"
-import { Button, Card, InputText, Select } from "primevue"
+import { Button, Card, InputText, Password, Select } from "primevue"
 import { definePreset } from "@primeuix/themes"
 
 const preset = definePreset(Aura, {
@@ -39,5 +39,6 @@ export const app = createApp(App)
   .use(createPinia())
   .component("Button", Button)
   .component("InputText", InputText)
+  .component("Password", Password)
   .component("Select", Select)
   .component("Card", Card)

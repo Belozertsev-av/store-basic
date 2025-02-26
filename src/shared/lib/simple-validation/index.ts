@@ -144,3 +144,14 @@ export const useFormValidation = <T extends object>(
     addWatcherToValidators,
   }
 }
+
+export const Required = {
+  validator: (value: unknown) => {
+    if (typeof value === "string") {
+      return value.trim() !== "" && value.trim() !== null
+    } else {
+      return Boolean(value)
+    }
+  },
+  message: () => "Required",
+}

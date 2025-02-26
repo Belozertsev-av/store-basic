@@ -12,17 +12,21 @@
 
 .card {
   padding: 1rem;
-  box-shadow: 0 0 0.5rem var(--p-surface-300);
   border-radius: 1rem;
+  box-shadow: 0 0 0.5rem var(--p-surface-300);
 }
 
 .alert {
   padding: 0.5rem;
-  border-radius: 0.5rem;
   background-color: var(--p-amber-100);
+  border-radius: 0.5rem;
 }
 
 .label {
   font-size: 1.1rem;
   color: var(--p-surface-600);
+}
+
+.warning-text {
+  font-size: 0.8rem;
 }

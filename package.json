@@ -10,8 +10,14 @@
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "lint": "yarn lint:js & yarn lint:css",
+    "lint:fix": "yarn lint:js:fix & yarn lint:css:fix",
+    "lint:js": "eslint src",
+    "lint:js:fix": "eslint --fix src",
+    "lint:postcss": "stylelint src --custom-syntax postcss-html",
+    "lint:scss": "stylelint \"src/**/*.scss\"",
+    "lint:css": "yarn lint:postcss & yarn lint:scss",
+    "lint:css:fix": "yarn lint:postcss --fix & yarn lint:scss --fix"
   },
   "dependencies": {
     "@primeuix/themes": "^1.0.0",

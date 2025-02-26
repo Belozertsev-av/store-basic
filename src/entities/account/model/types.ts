@@ -1,8 +1,8 @@
 export interface AccountInput {
-  labels: string | null
-  type: string | null
-  login: string | null
-  password?: string | null
+  labels: string
+  type: string
+  login: string
+  password?: string
 }
 
 export enum AccountTypes {
