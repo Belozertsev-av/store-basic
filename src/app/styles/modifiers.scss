@@ -1,0 +1,28 @@
+.title {
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  font-size: 1.4rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.card {
+  padding: 1rem;
+  box-shadow: 0 0 0.5rem var(--p-surface-300);
+  border-radius: 1rem;
+}
+
+.alert {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--p-amber-100);
+}
+
+.label {
+  font-size: 1.1rem;
+  color: var(--p-surface-600);
+}
