@@ -18,7 +18,6 @@ export const accountValidationRules: ValidationRules<Account> = {
     },
   ],
   password: [
-    Required,
     {
       validator: (value: string | undefined) => !!(value && value.length <= 100),
       message: () => "warnings.maxSymbols100",

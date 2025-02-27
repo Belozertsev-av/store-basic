@@ -54,7 +54,7 @@
 
 <script setup lang="ts">
 import { ValidatableInput } from "@/shared/ui/validatable-input"
-import { computed, ref } from "vue"
+import { computed, ref, watch } from "vue"
 import { Account, AccountTypes, useAccounts, accountValidationRules } from "@/entities/account"
 import { MaxSymbols100, Required, useFormValidation } from "@/shared/lib"
 import { ValidatableMultiInput } from "@/shared/ui/validatable-multi-input"
@@ -94,6 +94,13 @@ const { formValues, formErrors, hasErrors } = useFormValidation<Account>(tempAcc
       message: () => "warnings.uniqueLogin",
     },
   ],
+  password: isLDAP.value ? [] : accountValidationRules.password,
+})
+
+watch(isLDAP, (newVal) => {
+  if (newVal) {
+    formErrors.value.password = []
+  }
 })
 </script>
 

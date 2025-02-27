@@ -66,7 +66,7 @@ export const useFormValidation = <T extends object>(
     prefix: string = "",
   ) => {
     for (const key in validations) {
-      if (Object.hasOwn(validations, key) && Object.hasOwn(values, key)) {
+      if (Object.hasOwn(validations, key)) {
         const rules = validations[key]
         const value = values[key]
 
