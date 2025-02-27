@@ -98,6 +98,7 @@ const accountsStore = useAccounts()
   &__body {
     display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 1rem 0;
     overflow-y: hidden;
 
@@ -111,8 +112,9 @@ const accountsStore = useAccounts()
     &-content {
       display: flex;
       flex-direction: column;
-      height: fit-content;
+      height: 100%;
       overflow-y: auto;
+      padding-bottom: 0.5rem;
     }
   }
 

@@ -8,16 +8,10 @@ export const useAccounts = defineStore("Accounts", () => {
   const isInProcess = ref<boolean>(false)
   const isCreationInProcess = computed(() => isInProcess.value)
 
-  const addNewAccount = () => {
-    console.log("addNewAccount")
-    isInProcess.value = true
-    console.log(isCreationInProcess.value)
-  }
+  const addNewAccount = () => (isInProcess.value = true)
 
-  const removeAccount = (login: string) => {
-    accounts.value = accounts.value.filter((it) => it.login !== login)
-    isInProcess.value = false
-  }
+  const removeAccount = (login: string) =>
+    (accounts.value = accounts.value.filter((it) => it.login !== login))
 
   const saveAccount = (account: Account) => {
     isInProcess.value = false

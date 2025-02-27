@@ -1,45 +1,64 @@
-# basic-store
+# Управление учетными записями
 
-This template should help get you started developing with Vue 3 in Vite.
+Этот проект представляет собой форму управления учетными записями, реализованную с использованием Vue.js 3, TypeScript и Pinia. Проект разработан в рамках тестового задания
 
-## Recommended IDE Setup
+## Функциональность
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- **Добавление учетной записи**: По нажатию кнопки "+" добавляется новая учетная запись.
+- **Удаление учетной записи**: Каждая учетная запись может быть удалена соответствующей кнопкой.
+- **Редактирование учетной записи**: Каждая учетная запись может быть отредактирована путем прямого изменения. 
+Поля также валидируются, чтобы не нарушить консистентность
+- **Валидация полей**: Поля логина и пароля валидируются на потерю фокуса и изменение значения.
+- **Сохранение состояния**: Учетные записи сохраняются в стейт менеджере Pinia и сохраняются при обновлении страницы.
+ 
+## Стек технологий
 
-## Type Support for `.vue` Imports in TS
+- **Vue.js 3** с использованием Composition API
+- **TypeScript**
+- **Pinia** - для управления состоянием
+- **PrimeVue** - UI фреймворк
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## Установка и запуск
 
-## Customize configuration
+####  1. Клонируйте репозиторий:
+   ```bash
+   git clone https://github.com/Belozertsev-av/store-basic
+   ```
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+#### 2. Перейдите в директорию проекта:
 
-## Project Setup
-
-```sh
-yarn
+```bash
+cd store-basic
 ```
 
-### Compile and Hot-Reload for Development
+#### 3. Установите зависимости:
 
-```sh
+```bash
+yarn install
+```
+
+#### 4. Запустите сервер разработки:
+
+```bash
 yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+#### 5.Откройте браузер и перейдите по адресу http://localhost:5173.
 
+#### Запуск ESLint с авто исправлениями
+
+```sh
+yarn lint:fix
+```
+
+## Cборка
+
+####  1. Соберите проект:
 ```sh
 yarn build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
+####  1. Запустите приложение:
 ```sh
-yarn test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-yarn lint
+yarn preview
 ```
