@@ -10,6 +10,7 @@ import "./styles/main.scss"
 import { i18n } from "@/shared/lib/i18n"
 import { Button, Card, InputText, Password, Select } from "primevue"
 import { definePreset } from "@primeuix/themes"
+import { pinia } from "@/app/providers/pinia"
 
 const preset = definePreset(Aura, {
   semantic: {
@@ -30,13 +31,13 @@ const preset = definePreset(Aura, {
 })
 
 export const app = createApp(App)
+  .use(pinia)
   .use(i18n)
   .use(PrimeVue, {
     theme: {
       preset: preset,
     },
   })
-  .use(createPinia())
   .component("Button", Button)
   .component("InputText", InputText)
   .component("Password", Password)

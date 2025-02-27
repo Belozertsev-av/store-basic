@@ -29,19 +29,11 @@
       :errors="formErrors.password"
     />
     <Button
-      v-if="isEditing"
       icon="pi pi-save"
       severity="success"
       :disabled="hasErrors"
       size="small"
-      @click="accountsStore.editAccount(account.login, formValues)"
-    />
-    <Button
-      v-else
-      icon="pi pi-trash"
-      severity="danger"
-      size="small"
-      @click="accountsStore.removeAccount(account.login)"
+      @click="emit('saveAccount', formValues)"
     />
   </form>
 </template>
@@ -49,17 +41,13 @@
 <script setup lang="ts">
 import { ValidatableInput } from "@/shared/ui/validatable-input"
 import { computed, ref } from "vue"
-import { Account, AccountTypes, useAccounts } from "@/entities/account"
+import { Account, AccountTypes, emptyAccount } from "@/entities/account"
 import { Required, useFormValidation, ValidationRules } from "@/shared/lib"
 import { ValidatableMultiInput } from "@/shared/ui/validatable-multi-input"
 import { useI18n } from "vue-i18n"
-import { deepCompare } from "@/shared/utils"
 
-const props = defineProps<{
-  account: Account
-}>()
+const emit = defineEmits<(e: "saveAccount", account: Account) => void>()
 
-const accountsStore = useAccounts()
 const { t } = useI18n()
 
 const typeOptions = computed(() => [AccountTypes.LOCAL, AccountTypes.LDAP])
@@ -69,13 +57,8 @@ const translatedTypeOptions = computed(() => {
     value: option,
   }))
 })
-
-const tempAccount = ref<Account>({ ...props.account })
-
-const isEditing = computed(() => {
-  return !deepCompare(tempAccount.value, props.account)
-})
-const isLDAP = computed(() => tempAccount.value.type === AccountTypes.LDAP)
+const account = ref<Account>({ ...emptyAccount })
+const isLDAP = computed(() => account.value.type === AccountTypes.LDAP)
 
 const validationRules: ValidationRules<Account> = {
   labels: [
@@ -88,7 +71,7 @@ const validationRules: ValidationRules<Account> = {
   password: [Required],
 }
 const { formValues, formErrors, hasErrors } = useFormValidation<Account>(
-  tempAccount.value,
+  account.value,
   validationRules,
 )
 </script>

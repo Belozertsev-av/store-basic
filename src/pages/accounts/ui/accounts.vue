@@ -4,8 +4,9 @@
       <span>{{ t("accounts") }}</span>
       <Button
         icon="pi pi-plus"
+        :disabled="accountsStore.isCreationInProcess"
         size="small"
-        variant="outlined"
+        @click="accountsStore.addNewAccount"
       />
     </div>
     <div class="accounts__alert alert">
@@ -25,7 +26,31 @@
         </div>
       </div>
       <div class="accounts__body-content">
-        <AccountForm />
+        <div
+          v-if="accountsStore.accounts.length > 0"
+          class="accounts__list"
+        >
+          <AccountForm
+            v-for="account in accountsStore.accounts"
+            :key="account.login"
+            :account="account"
+          />
+        </div>
+        <div
+          v-if="accountsStore.isCreationInProcess"
+          class="accounts__new-form"
+        >
+          <AddAccountForm
+            v-if="accountsStore.isCreationInProcess"
+            @save-account="accountsStore.saveAccount($event)"
+          />
+        </div>
+        <div
+          v-if="!accountsStore.accounts.length && !accountsStore.isCreationInProcess"
+          class="accounts__fallback"
+        >
+          <span>{{ t("warnings.noAccounts") }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -34,8 +59,11 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n"
 import { AccountForm } from "@/widgets/account-form"
+import { useAccounts } from "@/entities/account"
+import AddAccountForm from "@/features/add-new-account/ui/add-account-form.vue"
 
 const { t } = useI18n()
+const accountsStore = useAccounts()
 </script>
 
 <style lang="scss" scoped>
@@ -79,9 +107,10 @@ const { t } = useI18n()
     }
   }
 
-  &__row {
-    display: grid;
-    grid-gap: 1rem;
+  &__fallback {
+    width: 100%;
+    padding: 2rem;
+    text-align: center;
   }
 }
 </style>

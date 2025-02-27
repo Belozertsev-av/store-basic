@@ -8,6 +8,15 @@ export const glossary = {
     password: "Password",
     local: "Local",
     LDAP: "LDAP",
+    warnings: {
+      required: "Required field",
+      noAccounts: "There is no accounts added",
+    },
+    placeholders: {
+      labels: "Ведите значение через ;",
+      type: "Выберите тип",
+      classicInput: "Введите значение",
+    },
   },
   ru: {
     accounts: "Учетные записи",
@@ -19,5 +28,14 @@ export const glossary = {
     password: "Пароль",
     local: "Локальная",
     LDAP: "LDAP",
+    warnings: {
+      required: "Обязательное поле",
+      noAccounts: "Не добавлено ни одного аккаунта",
+    },
+    placeholders: {
+      labels: "Enter the values via ;",
+      type: "Choose the type",
+      classicInput: "Enter the value",
+    },
   },
 }

@@ -1,5 +1,5 @@
 import { Ref, ref, toRef, watch } from "vue"
-import { getFromStringUnderObject, hasProperties } from "@/shared/lib"
+import { getFromStringUnderObject, hasProperties } from "@/shared/utils"
 
 export type ValidationRule<T> = {
   validator: (value: T) => boolean | Promise<boolean>
@@ -153,5 +153,5 @@ export const Required = {
       return Boolean(value)
     }
   },
-  message: () => "Required",
+  message: () => "warnings.required",
 }

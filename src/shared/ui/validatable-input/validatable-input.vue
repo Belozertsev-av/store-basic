@@ -2,7 +2,8 @@
   <div class="input">
     <Password
       v-if="type === 'password'"
-      v-model="modelValue"
+      v-model="modelValue as string"
+      :placeholder="t('placeholders.classicInput')"
       class="input__body"
       :class="{ invalid: errors?.length }"
       toggleMask
@@ -11,9 +12,10 @@
     <InputText
       v-else
       v-model="modelValue"
-      placeholder="Введите значения через ;"
+      :placeholder="t('placeholders.classicInput')"
       class="input__body"
       :class="{ invalid: errors?.length }"
+      Z
     />
 
     <div
@@ -24,13 +26,15 @@
         v-for="(error, index) in errors"
         :key="error + index"
       >
-        {{ error }}{{ index !== 0 ? "," : "" }}
+        {{ t(error) }}{{ index !== 0 ? "," : "" }}
       </span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useI18n } from "vue-i18n"
+
 withDefaults(
   defineProps<{
     errors?: string[]
@@ -40,6 +44,8 @@ withDefaults(
     type: "text",
   },
 )
+
+const { t } = useI18n()
 
 const modelValue = defineModel<string | null>()
 </script>
