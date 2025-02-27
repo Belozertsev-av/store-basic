@@ -5,21 +5,22 @@
       v-model="modelValue as string"
       :placeholder="t('placeholders.classicInput')"
       class="input__body"
-      :class="{ invalid: errors?.length }"
+      :class="{ invalid: errors?.length && isFocused }"
       toggleMask
       fluid
+      @focusin="isFocused = true"
     />
     <InputText
       v-else
       v-model="modelValue"
       :placeholder="t('placeholders.classicInput')"
       class="input__body"
-      :class="{ invalid: errors?.length }"
-      Z
+      :class="{ invalid: errors?.length && isFocused }"
+      @focusin="isFocused = true"
     />
 
     <div
-      v-if="errors?.length"
+      v-if="errors?.length && isFocused"
       class="input__warnings warning-text invalid"
     >
       <span
@@ -34,6 +35,7 @@
 
 <script setup lang="ts">
 import { useI18n } from "vue-i18n"
+import { ref } from "vue"
 
 withDefaults(
   defineProps<{
@@ -48,6 +50,7 @@ withDefaults(
 const { t } = useI18n()
 
 const modelValue = defineModel<string | null>()
+const isFocused = ref<boolean>(false)
 </script>
 
 <style lang="scss" scoped>
@@ -61,9 +64,9 @@ const modelValue = defineModel<string | null>()
 
   &__warnings {
     position: absolute;
-    bottom: -1rem;
     left: 0;
     width: 100%;
+    margin-top: 0.15rem;
     overflow-x: hidden;
   }
 }
@@ -71,5 +74,9 @@ const modelValue = defineModel<string | null>()
 .invalid {
   color: var(--p-red-500);
   border-color: var(--p-red-500);
+
+  :deep(.p-password-input) {
+    border-color: var(--p-red-500) !important;
+  }
 }
 </style>

@@ -155,3 +155,8 @@ export const Required = {
   },
   message: () => "warnings.required",
 }
+
+export const MaxSymbols100 = {
+  validator: (value: string) => value.length <= 100,
+  message: () => "warnings.maxSymbols100",
+}

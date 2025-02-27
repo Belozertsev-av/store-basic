@@ -11,11 +11,14 @@ export const glossary = {
     warnings: {
       required: "Required field",
       noAccounts: "There is no accounts added",
+      maxSymbols100: "The maximum allowed number of characters is 100",
+      maxSymbols50: "The maximum allowed number of characters is 50",
+      uniqueLogin: "Login should be unique",
     },
     placeholders: {
-      labels: "Ведите значение через ;",
-      type: "Выберите тип",
-      classicInput: "Введите значение",
+      labels: "Enter the values via ;",
+      type: "Choose the type",
+      classicInput: "Enter the value",
     },
   },
   ru: {
@@ -31,11 +34,14 @@ export const glossary = {
     warnings: {
       required: "Обязательное поле",
       noAccounts: "Не добавлено ни одного аккаунта",
+      maxSymbols100: "Максимальное допустимое кол-во символов - 100",
+      maxSymbols50: "Максимальное допустимое кол-во символов - 50",
+      uniqueLogin: "Логин должен быть уникальным",
     },
     placeholders: {
-      labels: "Enter the values via ;",
-      type: "Choose the type",
-      classicInput: "Enter the value",
+      labels: "Ведите значение через ;",
+      type: "Выберите тип",
+      classicInput: "Введите значение",
     },
   },
 }

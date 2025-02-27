@@ -1,20 +1,16 @@
 <template>
   <div class="wrapper">
-    <main>
-      <div class="container">
+    <div class="container">
+      <main>
         <accounts />
-      </div>
-    </main>
-    <footer>
-      <div class="container">
-        <div class="footer-body">
-          <Button
-            :label="oppositeLocale"
-            @click="locale === AppLocales.RU ? (locale = AppLocales.EN) : (locale = AppLocales.RU)"
-          />
-        </div>
-      </div>
-    </footer>
+      </main>
+      <footer>
+        <Button
+          :label="oppositeLocale"
+          @click="locale === AppLocales.RU ? (locale = AppLocales.EN) : (locale = AppLocales.RU)"
+        />
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -33,15 +29,20 @@ const oppositeLocale = computed(() =>
 
 <style lang="scss" scoped>
 .wrapper {
-  padding: 4rem 0;
-}
-
-.footer-body {
   display: flex;
-  justify-content: flex-end;
+  padding: 2rem 0;
+  overflow: hidden;
 }
 
 main {
-  height: 100%;
+  display: flex;
+  height: 95%;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: 1rem;
 }
 </style>

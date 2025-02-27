@@ -4,12 +4,13 @@
       v-model="inputValue"
       :placeholder="t('placeholders.labels')"
       class="input__body"
-      :class="{ invalid: errors?.length }"
+      :class="{ invalid: errors?.length && isFocused }"
+      @focusin="isFocused = true"
       @input="updateModelValue"
     />
 
     <div
-      v-if="errors?.length"
+      v-if="errors?.length && isFocused"
       class="input__warnings warning-text invalid"
     >
       <span
@@ -37,7 +38,8 @@ const modelValue = defineModel<{ text: string }[]>({
   required: true,
 })
 
-const inputValue = ref(modelValue.value.map((item) => item.text).join("; "))
+const isFocused = ref<boolean>(false)
+const inputValue = ref(modelValue.value.map((item) => item.text).join(";"))
 
 const updateModelValue = debounce(() => {
   const texts = inputValue.value
@@ -60,9 +62,9 @@ const updateModelValue = debounce(() => {
 
   &__warnings {
     position: absolute;
-    bottom: -1rem;
     left: 0;
     width: 100%;
+    margin-top: 0.15rem;
     overflow-x: hidden;
   }
 }

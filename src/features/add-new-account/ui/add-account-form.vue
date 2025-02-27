@@ -3,8 +3,8 @@
     class="form__row"
     :style="
       isLDAP
-        ? 'grid-template-columns: repeat(2, 1fr) 2fr 4rem;'
-        : 'grid-template-columns: repeat(4, 1fr) 4rem;'
+        ? 'grid-template-columns: repeat(2, 1fr) 2fr 2.5rem;'
+        : 'grid-template-columns: repeat(4, 1fr) 2rem;'
     "
   >
     <ValidatableMultiInput
@@ -41,8 +41,8 @@
 <script setup lang="ts">
 import { ValidatableInput } from "@/shared/ui/validatable-input"
 import { computed, ref } from "vue"
-import { Account, AccountTypes, emptyAccount } from "@/entities/account"
-import { Required, useFormValidation, ValidationRules } from "@/shared/lib"
+import { Account, AccountTypes, accountValidationRules, emptyAccount } from "@/entities/account"
+import { useFormValidation } from "@/shared/lib"
 import { ValidatableMultiInput } from "@/shared/ui/validatable-multi-input"
 import { useI18n } from "vue-i18n"
 
@@ -60,19 +60,9 @@ const translatedTypeOptions = computed(() => {
 const account = ref<Account>({ ...emptyAccount })
 const isLDAP = computed(() => account.value.type === AccountTypes.LDAP)
 
-const validationRules: ValidationRules<Account> = {
-  labels: [
-    {
-      validator: (value) => !!value[0]?.text,
-      message: () => "warnings.required",
-    },
-  ],
-  login: [Required],
-  password: [Required],
-}
 const { formValues, formErrors, hasErrors } = useFormValidation<Account>(
   account.value,
-  validationRules,
+  accountValidationRules,
 )
 </script>
 

@@ -25,7 +25,7 @@
           {{ t("password") }}
         </div>
       </div>
-      <div class="accounts__body-content">
+      <div class="accounts__body-content custom-scroll">
         <div
           v-if="accountsStore.accounts.length > 0"
           class="accounts__list"
@@ -69,9 +69,10 @@ const accountsStore = useAccounts()
 <style lang="scss" scoped>
 .accounts {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   width: 100%;
-  max-height: 100%;
+  height: 100%;
 
   &__header {
     display: flex;
@@ -98,12 +99,20 @@ const accountsStore = useAccounts()
     display: flex;
     flex-direction: column;
     padding: 1rem 0;
+    overflow-y: hidden;
 
     &-header {
       display: grid;
       grid-gap: 1rem;
       padding-bottom: 0.5rem;
       text-align: left;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+      overflow-y: auto;
     }
   }
 

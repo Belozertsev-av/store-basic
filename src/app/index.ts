@@ -1,5 +1,4 @@
 import { createApp } from "vue"
-import { createPinia } from "pinia"
 import App from "./app.vue"
 import PrimeVue from "primevue/config"
 import Aura from "@primeuix/themes/aura"
